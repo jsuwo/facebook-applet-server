@@ -48,20 +48,28 @@ These instructions assume your web server root is at `/var/www/`.
 1. SSH into your server and switch to root
 
 2. Change to `/var/www` and clone the repository:
+    ````
     git clone git://github.com/jsuwo/facebook-applet-server.git
+    ````
 
 3. Rename the directory to `facebook`:
+    ````
     mv facebook-applet-server facebook
+    ````
 
 4. Ensure permissions are set properly:
+    ````
     chown -R root:root facebook
     find -type f | xargs chmod 644
     find -type d | xargs chmod 755
+    ````
 
 5. Change to the `facebook` directory and make the `photos` directory writeable
    to all:
+    ````
     cd facebook
     chmod 777 photos
+    ````
 
 6. Edit the file `includes/config.php.inc` and fill in your Facebook app details
 
@@ -70,9 +78,8 @@ These instructions assume your web server root is at `/var/www/`.
    
 8. Edit your application configuration on Facebook and change the following 
    settings:
-
-   * Canvas URL: http://YOUR_HOSTNAME/facebook/
-   * Secure Canvas URL: https://YOUR_HOSTNAME/facebook/
+   * _Canvas URL:_ `http://YOUR_HOSTNAME/facebook/`
+   * _Secure Canvas URL:_ `https://YOUR_HOSTNAME/facebook/`
 
 9. Save your changes and visit your app's page.  The applet should run and all
    should work.
