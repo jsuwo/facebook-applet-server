@@ -1,0 +1,2 @@
+# Prevent visitors from listing the directory
+Options All -Indexes

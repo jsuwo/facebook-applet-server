@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jnlp codebase="https://ec2-107-21-145-149.compute-1.amazonaws.com/facebook/java" href="launch.jnlp" spec="1.0+">
+
+  <information>
+    <title>CS2212 Facebook Applet</title>
+    <vendor>Jeff Shantz</vendor>
+    <homepage href="http://www.jeffshantz.com"/>
+    <description>CS2212 Facebook Applet</description>
+    <description kind="short">CS2212 Facebook Applet</description>
+  </information>
+
+  <update check="always"/>
+
+  <resources>
+    <j2se version="1.6+"/>
+    <jar href="lib/CS2212_Facebook_Applet.jar" main="true"/>
+    <jar href="lib/commons-codec-1.6.jar"/>
+    <jar href="lib/commons-logging-1.1.1.jar"/>
+    <jar href="lib/fluent-hc-4.2.1.jar"/>
+    <jar href="lib/httpclient-4.2.1.jar"/>
+    <jar href="lib/httpclient-cache-4.2.1.jar"/>
+    <jar href="lib/httpcore-4.2.1.jar"/>
+    <jar href="lib/httpmime-4.2.1.jar"/>
+    <jar href="lib/json-simple-1.1.1.jar"/>
+  </resources>
+
+  <applet-desc main-class="ca.uwo.csd.cs2212.FacebookApplet" name="CS2212 Facebook Applet" height="800" width="600"/>
+
+</jnlp>
