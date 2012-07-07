@@ -1,3 +1,4 @@
+<?php
 /*******************************************************************************
  * index.php
  * Author: Jeff Shantz <x@y, x = jshantz4, y = csd.uwo.ca>
@@ -14,7 +15,6 @@
  * Note: I am not a PHP programmer, and this is simply a proof-of-concept.
  *
  ******************************************************************************/
-<?php
 
 // Initialize our Facebook object
 require_once 'includes/config.php.inc';

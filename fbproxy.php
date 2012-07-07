@@ -1,3 +1,5 @@
+<?php
+
 /*******************************************************************************
  * fbproxy.php
  * Author: Jeff Shantz <x@y, x = jshantz4, y = csd.uwo.ca>
@@ -64,7 +66,6 @@
  *     (Downloads the profile photo for user 55 on Facebook)
  *
  ******************************************************************************/
-<?php
 
 // Initialize our Facebook object
 require_once 'includes/config.php.inc';

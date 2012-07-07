@@ -1,3 +1,4 @@
+<?php
 /*******************************************************************************
  * config.php.inc
  * Author: Jeff Shantz <x@y, x = jshantz4, y = csd.uwo.ca>
@@ -6,7 +7,6 @@
  * the values appropriate for your application.
  *
  ******************************************************************************/
-<?php
 
 // Load the SDK
 require_once 'sdk/facebook.php';
