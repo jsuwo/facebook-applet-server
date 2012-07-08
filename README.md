@@ -84,12 +84,95 @@ These instructions assume your web server root is at `/var/www/`.
 9. Save your changes and visit your app's page.  The applet should run and all
    should work.
 
-Troubleshooting
-===============
+Troubleshooting / Tips
+======================
 
-If you're using a self-signed SSL certificate, you need to make sure that either
-the server's certificate or the certificate of the root authority is imported
-into your browser's / operating system's list of trusted certificates, 
+* If you're using a self-signed SSL certificate, you need to make sure that either
+  the server's certificate or the certificate of the root authority is imported
+  into your browser's / operating system's list of trusted certificates, 
+
+* It is immensely useful to see what Facebook is returning to your PHP script.  
+  You can print out the contents of a variable in PHP using the following:
+
+  ````
+  print_r($my_var);
+  ````
+
+* It is also extremely useful to test the PHP script to see what it is returning
+  to your applet.  You can do so by simply visiting the `fbproxy.php` script in
+  your browser.  For example, if I wanted to see what the `refresh_profile` task
+  returns, I can just go to:
+
+  ````
+  http://hostname/facebook/fbproxy.php?do=refresh_profile&access_token=MY_ACCESS_TOKEN
+  ````
+
+  Similarly, to get my friend list, I can go to:
+
+  ````
+  http://hostname/facebook/fbproxy.php?do=refresh_friends&access_token=MY_ACCESS_TOKEN
+  ````
+
+  Of course, in order to properly authenticate, you will need to find out your
+  Facebook access token.  You can do this by writing a quick PHP script to print out
+  your token.  Create a script `print_token.php` and place it in the same directory
+  as `fbtoken.php`:
+
+  ````
+  <?php
+  require_once 'includes/config.php.inc';  
+  echo $facebook->getAccessToken();
+  ?>
+  ````
+
+* My system kept caching my old applet code (even though I disabled this in the 
+  Java control panel) and wouldn't display new changes to the applet in my browser
+  until I killed my Java process (i.e. simply closing the tab and reopening the page
+  on a new tab was not sufficient).  YMMV here.
+
+* I put an error console in the applet that should display any exceptions that occur
+  in the applet.  Still, if nothing is showing up and your Java console doesn't show
+  anything, then check out the web server's error log:
+
+  ````
+  cat /var/log/apache/error.log
+  ````
+
+  You can poll for changes in the error log by issuing the following command.  Then
+  go and run your script and see if anything appears in the log.  Press `Ctrl+C` to
+  stop polling.
+
+  ````
+  tail -f /var/log/apache/error.log
+  ````
+
+Applet Source Code
+==================
+
+The source code for the applet is located in the `java/src` directory.  If you 
+are going to edit it, I *highly* recommend doing so in NetBeans since, otherwise,
+you won't be able to use a GUI editor to design `FacebookApplet.java`.
+
+The main classes are:
+
+* `ca.uwo.csd.cs2212.FacebookApplet`
+  * Main applet class
+
+* `ca.uwo.csd.cs2212.facebook.FacebookClient`
+
+  * Used to communicate with the Facebook proxy script (i.e. the PHP script on
+    the server).  This script uses the following libraries:
+
+    * Apache HttpComponents (http://hc.apache.org/) for all HTTP communication.
+      See http://hc.apache.org/httpcomponents-client-ga/tutorial/html/ for a 
+      tutorial.
+
+    * simple-json (http://code.google.com/p/json-simple/) for parsing JSON
+      server responses.  See http://code.google.com/p/json-simple/wiki/DecodingExamples
+      for examples of decoding JSON responses using the library.
+
+* The rest of the classes are fairly minor.  All have been commented at least to
+  some extent, so you can see their purpose in the source code.
 
 Resources
 =========
