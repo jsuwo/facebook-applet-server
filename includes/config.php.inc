@@ -13,8 +13,8 @@ require_once 'sdk/facebook.php';
 
 // Put your application config here
 $config = array();
-$config['appId'] = 'CHANGE ME';
-$config['secret'] = 'CHANGE ME';
+$config['appId'] = 'YOUR_FACEBOOK_APP_ID';
+$config['secret'] = 'YOUR_FACEBOOK_APP_SECRET';
 $config['fileUpload'] = false;
 
 // Create the Facebook object
