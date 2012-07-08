@@ -90,3 +90,12 @@ Troubleshooting
 If you're using a self-signed SSL certificate, you need to make sure that either
 the server's certificate or the certificate of the root authority is imported
 into your browser's / operating system's list of trusted certificates, 
+
+Resources
+=========
+
+* Check out the Graph API documentation at https://developers.facebook.com/docs/reference/api/.
+
+* If you want to do more than just grabbing data from Facebook (e.g. posting a
+  message to a wall), then you will need to request extended permissions.  See 
+  the documentation at https://developers.facebook.com/docs/authentication/permissions/#user_friends_perms.
