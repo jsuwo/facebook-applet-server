@@ -59,15 +59,16 @@ These instructions assume your web server root is at `/var/www/`.
 
 4. Ensure permissions are set properly:
     ````
-    chown -R root:root facebook
-    find -type f | xargs chmod 644
-    find -type d | xargs chmod 755
+    chown -R root:root facebook            # Make root the owner of all files/directories (should be anyway)
+    chmod 755 facebook                     # Give the 'facebook' directory 755 permissions
+    cd facebook                            # Change to the 'facebook' directory
+    find -type f | xargs chmod 644         # Give all files 644 permissions
+    find -type d | xargs chmod 755         # Give all directories 755 permissions
     ````
 
-5. Change to the `facebook` directory and make the `photos` directory writeable
-   to all:
+5. Make the `photos` directory writeable to all so that the PHP script can download profile photos from
+   Facebook and save them there:
     ````
-    cd facebook
     chmod 777 photos
     ````
 
@@ -87,19 +88,28 @@ These instructions assume your web server root is at `/var/www/`.
   https://developers.facebook.com/apps
 
   ````php
-  $app_url = 'YOUR CANVAS URL HERE'
+  $app_url = 'YOUR CANVAS URL HERE';
   ````
    
   For example, if your app is named `testqwe`, then you would enter
 
   ````php
-  $app_url = 'https://apps.facebook.com/testqwe/'
+  $app_url = 'https://apps.facebook.com/testqwe/';
   ````
 
   Notice that this is the URL of your app *on Facebook* -- not the URL of your server.
 
 7. Edit the file `java/launch.jnlp` and change the codebase attribute to reflect
-   the hostname of your server.  Be sure to use `HTTPS`
+   the hostname of your server.  Be sure to use `HTTPS`.  Don't forget the `/facebook/java`
+   at the end of the URL.  For example, if your hostname is `example.com`, then the entire
+   line should read:
+
+   ````xml
+   <jnlp codebase="https://example.com/facebook/java" href="launch.jnlp" spec="1.0+">
+   ````
+ 
+    Notice that `https` is being used, and the path `/facebook/java` has been specified
+    after the hostname.
    
 8. Edit your application configuration on Facebook and change the following 
    settings:
