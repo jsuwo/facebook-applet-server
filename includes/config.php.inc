@@ -19,8 +19,5 @@ $facebook = new Facebook(array(
 ));
 
 // URL of your Facebook app -- CHANGE THIS
-$app_url = 'YOUR CANVAS URL HERE'
-
-// Create the Facebook object
-$facebook = new Facebook($config);
+$app_url = 'YOUR CANVAS URL HERE';
 ?>

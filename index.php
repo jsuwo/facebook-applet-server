@@ -42,8 +42,9 @@ $loginUrl = $facebook->getLoginUrl(
   top.location="<?= $loginUrl ?>";
 </script>
 
-<!-- If they don't have JavaScript enabled, show a link -->
-Click <a href="<?= $loginUrl ?>">here</a> to access the app.
+<noscript>
+Sorry Webber, you'll need to enable JavaScript.
+</noscript>
 
 <?php 
 endif;
