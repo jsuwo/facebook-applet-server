@@ -71,7 +71,32 @@ These instructions assume your web server root is at `/var/www/`.
     chmod 777 photos
     ````
 
-6. Edit the file `includes/config.php.inc` and fill in your Facebook app details
+6. Edit the file `includes/config.php.inc` and fill in your Facebook app details.
+   Specifically, you will need to specify the `appId` and `secret` for your app,
+   which can be obtained from https://developers.facebook.com/apps
+   ````php
+  $facebook = new Facebook(array(
+    'appId'  => 'YOUR APP ID HERE',
+    'secret' => 'YOUR APP SECRET HERE',
+    'cookie' => true
+  ));
+  ````
+  
+  Additionally, you will need to specify the URL for your app on Facebook in the `app_url`
+  variable.  This is listed under the heading *Canvas Page* in your app summary at 
+  https://developers.facebook.com/apps
+
+  ````php
+  $app_url = 'YOUR CANVAS URL HERE'
+  ````
+   
+  For example, if your app is named `testqwe`, then you would enter
+
+  ````php
+  $app_url = 'https://apps.facebook.com/testqwe/'
+  ````
+
+  Notice that this is the URL of your app *on Facebook* -- not the URL of your server.
 
 7. Edit the file `java/launch.jnlp` and change the codebase attribute to reflect
    the hostname of your server.  Be sure to use `HTTPS`

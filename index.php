@@ -19,30 +19,32 @@
 // Initialize our Facebook object
 require_once 'includes/config.php.inc';
 
-// Get the current user
-$user = $facebook->getUser();
-
-if ($user)
-{
-
-  // Try to load the user's profile details
-  try
-  {
-    $user_profile = $facebook->api('/me');
-  } catch (FacebookApiException $e) {
-    error_log($e);
-    $user = null;
-  }
-}
-
 include 'includes/header.html.inc';
 
 // If the user was loaded, display the applet
-if ($user): 
+if ($facebook->getUser()): 
   include 'includes/applet.html.inc';
 else:
+
+// Otherwise, redirect the user to get authorization for the app
+$loginUrl = $facebook->getLoginUrl(
+    array(
+      'canvas' => true,
+      'fbconnect' => false,
+      'redirect_uri' => $app_url,
+      //'scope' => 'read_stream, friends_likes'     // Additional permissions can be requested here, see https://developers.facebook.com/docs/authentication/permissions/
+      )
+    );
 ?>
-  Dude, you're not even logged in!
+
+<!-- Redirect the user to the authorization URL via JavaScript -->
+<script type="text/javascript">
+  top.location="<?= $loginUrl ?>";
+</script>
+
+<!-- If they don't have JavaScript enabled, show a link -->
+Click <a href="<?= $loginUrl ?>">here</a> to access the app.
+
 <?php 
 endif;
 

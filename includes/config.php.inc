@@ -11,11 +11,15 @@
 // Load the SDK
 require_once 'sdk/facebook.php';
 
-// Put your application config here
-$config = array();
-$config['appId'] = 'YOUR_FACEBOOK_APP_ID';
-$config['secret'] = 'YOUR_FACEBOOK_APP_SECRET';
-$config['fileUpload'] = false;
+// App details -- CHANGE THESE
+$facebook = new Facebook(array(
+  'appId'  => 'YOUR APP ID HERE',
+  'secret' => 'YOUR APP SECRET HERE',
+  'cookie' => true
+));
+
+// URL of your Facebook app -- CHANGE THIS
+$app_url = 'YOUR CANVAS URL HERE'
 
 // Create the Facebook object
 $facebook = new Facebook($config);
